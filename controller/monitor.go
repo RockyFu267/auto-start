@@ -9,25 +9,19 @@ import (
 func StartMonitoring(port string, startPath string, intervalTime int64) {
 	for {
 		time.Sleep(time.Duration(intervalTime) * time.Second)
-		resCon, err := bf.CheckPort(port)
+		_, err := bf.TcpGather(port)
 		if err != nil {
 			log.Println(err)
-			continue
-		} else {
-			if resCon {
+			resStr, err := bf.RunStart(startPath)
+			if err != nil {
+				log.Println(err)
+				continue
+			}
+			if resStr {
 				continue
 			} else {
-				resStr, err := bf.RunStart(startPath)
-				if err != nil {
-					log.Println(err)
-					continue
-				}
-				if resStr {
-					continue
-				} else {
-					log.Println(port + " start failed")
-					continue
-				}
+				log.Println(port + " start failed")
+				continue
 			}
 		}
 	}
