@@ -1,0 +1,12 @@
+interval: 5
+service:
+  - port: 30011
+    startpath: /app/pmdata/bin/30011-start.sh
+  - port: 30021
+    startpath: /app/pmdata/bin/30021-start.sh
+  - port: 30031
+    startpath: /app/pmdata/bin/30031-start.sh
+  - port: 30041
+    startpath: /app/pmdata/bin/30041-start.sh
+  - port: 8666
+    startpath: /app/pmdata/bin/54257-start.sh

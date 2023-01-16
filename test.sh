@@ -1,0 +1,1 @@
+ls /Users/fuao/Desktop/code/github/auto-start/test/
