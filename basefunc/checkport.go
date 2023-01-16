@@ -29,7 +29,7 @@ func TcpGather(ports string) (bool, error) {
 		return false, err
 	} else {
 		if conn != nil {
-			log.Println(ports + " Connet Success")
+			//log.Println(ports + " Connet Success")
 			return true, nil
 		} else {
 			log.Println(ports+" Connet Refused", err)
