@@ -9,7 +9,7 @@ import (
 func StartMonitoring(port string, startPath string, intervalTime int64) {
 	for {
 		time.Sleep(time.Duration(intervalTime) * time.Second)
-		resCon, err := bf.TcpGather(port)
+		resCon, err := bf.CheckPort(port)
 		if err != nil {
 			log.Println(err)
 			continue

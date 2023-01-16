@@ -1,14 +1,23 @@
 package basefunc
 
 import (
+	bc "auto-start/basecmd"
 	"log"
 	"net"
 	"time"
 )
 
-// func CheckPort(input int64) (bool, error) {
-// 	return true, nil
-// }
+func CheckPort(input string) (bool, error) {
+	cmdRes, err := bc.CmdAndChangeDirToResAllInOne("./", "ss -lntp | grep "+input)
+	if err != nil {
+		log.Println("check port "+input+" error:", err)
+		return false, err
+	}
+	if len(cmdRes) == 0 {
+		return false, nil
+	}
+	return true, nil
+}
 
 //TcpGather net包
 func TcpGather(ports string) (bool, error) {
